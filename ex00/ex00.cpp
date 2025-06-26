@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex00.c                                             :+:      :+:    :+:   */
+/*   ex00.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 16:22:10 by pshcherb          #+#    #+#             */
-/*   Updated: 2025/06/25 21:15:28 by pshcherb         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:27:50 by pshcherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
+#include <iostream>
+#include <cctype>
 
 int main(int argc, char **argv) 
 {
@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     (void)argv;
     if (argc == 1)
     {
-        printf("* LOUD AND UNBEARABLE FEEDBACK NOISE *\n");
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << '\n';
         return (0);
     }
     else
@@ -32,11 +32,11 @@ int main(int argc, char **argv)
             j = 0;
             while (argv[i][j])
             {
-                printf("%c", toupper(argv[i][j]));
+                std::cout << static_cast<char>(std::toupper(static_cast<unsigned char>(argv[i][j])));
                 j++;
             }
             i++;
         }
-        printf("\n");
+        std::cout << '\n';
     }
 }
