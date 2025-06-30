@@ -6,7 +6,7 @@
 /*   By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 12:29:51 by pshcherb          #+#    #+#             */
-/*   Updated: 2025/06/30 21:22:03 by pshcherb         ###   ########.fr       */
+/*   Updated: 2025/06/30 21:33:31 by pshcherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int main(int argc, char **argv)
         } else if (command == "SEARCH") {
 			phoneBook.searchContacts();
 			std::cout << "Type in the index of the entry to display.\n";
-			// add behavior
+			std::cin >> i;
+			std::cout << "First Name: " << sfirstName;
         } else if (command == "EXIT") {
             std::cout << "Exiting the program.\n";
             break;
