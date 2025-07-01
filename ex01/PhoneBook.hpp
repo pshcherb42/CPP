@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ex01.hpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 14:37:09 by pshcherb          #+#    #+#             */
-/*   Updated: 2025/06/30 21:15:48 by pshcherb         ###   ########.fr       */
+/*   Created: 2025/07/01 18:16:07 by pshcherb          #+#    #+#             */
+/*   Updated: 2025/07/01 18:18:57 by pshcherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EX01_HPP
-#define EX01_HPP
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
+# include <iostream>
 # include <iomanip>
-
-class   Contact
-{
-	private:
-		std::string    firstName;
-		std::string    lastName;
-		std::string    nickName;
-		std::string    phoneNumber;
-		std::string    darkSecret;
-	public:
-		Contact() : firstName(""), lastName(""), nickName(""), phoneNumber(""), darkSecret(""){}
-		Contact(std::string fN, std::string lN, std::string nN, std::string pN, std::string dS)
-			: firstName(fN), lastName(lN), nickName(nN), phoneNumber(pN), darkSecret(dS) {}
-		
-		std::string getFirstName() const { return firstName; }
-    	std::string getLastName() const { return lastName; }
-    	std::string getNickName() const { return nickName; }		
-};
+# include <limits>
+# include "Contact.hpp"
 
 class   PhoneBook
 {
@@ -48,12 +33,11 @@ class   PhoneBook
 				contacts[contactCount] = contact;
 				contactCount++;
 			}
-			else // add handling more that 8 contacts
+			else
 			{
-				std::cout << "PhoneBook is full. Cannot add more contacts.\n";
+				contacts[7] = contact;
 			}
 		}
-		
 		std::string truncate(const std::string& text, int width) const {
     		if (text.length() > static_cast<std::string::size_type>(width)) {
         		return text.substr(0, width - 1) + ".";
@@ -76,6 +60,38 @@ class   PhoneBook
 				std::cout << std::setw(columnWidth) << std::right << truncate(contacts[i].getLastName(), columnWidth) << "   |   ";
 				std::cout << std::setw(columnWidth) << std::right << truncate(contacts[i].getNickName(), columnWidth) << std::endl;
 			}
+		}
+		
+		std::string	display(const std::string& text) const {
+			return text;
+		}
+		
+		void	displayContact() const {
+			std::cout << "Type in the index of the entry to display.\n";
+			int	i;
+			
+			if (!(std::cin >> i)) {
+				if (std::cin.eof()) {
+            		std::cout << "EOF detected. Exiting program.\n";
+            		exit(0); // Exit the program gracefully
+        		} else {
+        			std::cin.clear(); // Clear the error flag
+        			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        			std::cout << "Invalid input. Please enter a valid index.\n";
+        			return ;
+    			}
+			}
+			
+			if (i < 1 || i >= (contactCount + 1)) {
+        		std::cout << "Invalid index. Please try again.\n";
+        		return ;
+    		}
+				
+			std::cout << "First Name: " << display(contacts[i - 1].getFirstName()) << "\n";
+			std::cout << "Last Name: " << display(contacts[i - 1].getLastName()) << "\n";
+			std::cout << "Nick Name: " << display(contacts[i - 1].getNickName()) << "\n";
+			std::cout << "Phone Number: " << display(contacts[i - 1].getPhoneNumber()) << "\n";
+			std::cout << "Darkest Secret: " << display(contacts[i - 1].getDarkestSecret()) << "\n";
 		}
 };
 

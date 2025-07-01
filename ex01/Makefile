@@ -6,13 +6,13 @@
 #    By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/26 14:25:16 by pshcherb          #+#    #+#              #
-#    Updated: 2025/06/30 21:10:38 by pshcherb         ###   ########.fr        #
+#    Updated: 2025/07/01 18:56:45 by pshcherb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = myAwesomePhonebook
 
-SRCS = ex01.cpp
+SRCS = MyAwesomePhonebook.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 CXX = c++
@@ -20,10 +20,10 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(OBJS) ex01.hpp
+$(NAME): $(OBJS) Contact.hpp PhoneBook.hpp
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
