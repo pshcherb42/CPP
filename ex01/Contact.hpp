@@ -6,7 +6,7 @@
 /*   By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:37:09 by pshcherb          #+#    #+#             */
-/*   Updated: 2025/07/01 18:18:20 by pshcherb         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:20:30 by pshcherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class   Contact
 		std::string    darkestSecret;
 	public:
 		Contact() : firstName(""), lastName(""), nickName(""), phoneNumber(""), darkestSecret(""){}
+		~Contact( void );
 		Contact(std::string fN, std::string lN, std::string nN, std::string pN, std::string dS)
 			: firstName(fN), lastName(lN), nickName(nN), phoneNumber(pN), darkestSecret(dS) {}
 		

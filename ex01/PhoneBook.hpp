@@ -6,7 +6,7 @@
 /*   By: pshcherb <pshcherb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 18:16:07 by pshcherb          #+#    #+#             */
-/*   Updated: 2025/07/01 18:18:57 by pshcherb         ###   ########.fr       */
+/*   Updated: 2025/07/01 19:20:01 by pshcherb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class   PhoneBook
 		
 	public:
 		PhoneBook() : contactCount(0) {}
+		~PhoneBook( void );
 	
 		void	addContact(const Contact& contact)
 		{
